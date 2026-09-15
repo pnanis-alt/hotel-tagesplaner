@@ -14,7 +14,7 @@
   <img alt=".NET 8" src="https://img.shields.io/badge/.NET-8-512BD4">
   <img alt="WPF" src="https://img.shields.io/badge/UI-WPF-0078D4">
   <img alt="SQLite" src="https://img.shields.io/badge/Datenbank-SQLite-003B57">
-  <img alt="37 Tests" src="https://img.shields.io/badge/Tests-37%20gr%C3%BCn-2EA44F">
+  <img alt="72 Tests" src="https://img.shields.io/badge/Tests-72%20gr%C3%BCn-2EA44F">
   <img alt="Im Produktivbetrieb" src="https://img.shields.io/badge/Status-im%20Produktivbetrieb-1DB67D">
 </p>
 
@@ -50,6 +50,7 @@ bevor etwas vergessen wird.
 - Tagesliste und Ausblick auf die nächsten 7 Tage
 - Eigener Monatskalender: Tage mit Vorgängen sind markiert, Doppelklick legt einen Eintrag an
 - Kategorien Frühstück, Fahrrad und Sonstiges (erweiterbar) mit passenden Pflichtfeldern
+- Schnelle Uhrzeit-Eingabe: 09:00 vorbelegt, `830` statt `08:30` tippen, −/+ in 15-Minuten-Schritten
 - Zähler für zusätzliche Frühstücksgäste, Fahrräder und offene Vorgänge
 - Tagesliste drucken
 
@@ -58,6 +59,8 @@ bevor etwas vergessen wird.
 - Unübersehbares Erinnerungsfenster: immer im Vordergrund, pulsierender Rahmen, blinkende
   Taskleiste, Signalton alle 10 Sekunden – ohne beim Tippen den Fokus zu stehlen
 - „Erledigt" mit Sicherheitsrückfrage, „In 10 Minuten" oder „In 1 Stunde nochmal erinnern"
+- „Morgen um 8 Uhr" oder ein eigener Zeitpunkt – nur bis zum letzten Tag des Vorgangs,
+  denn danach wird er automatisch gelöscht und die Erinnerung käme nie an
 - Verpasste Erinnerungen (Laptop aus, Ruhezustand) erscheinen sofort beim Start bzw. Aufwachen
 
 **Zuverlässig im Betrieb**
@@ -84,8 +87,8 @@ bevor etwas vergessen wird.
 
 <table>
   <tr>
-    <td width="50%"><b>Erinnerungsfenster</b><br>Erledigt mit Rückfrage oder später erinnern – verpasste Erinnerungen sind markiert.</td>
-    <td width="50%"><b>Eintrag bearbeiten</b><br>Pflichtfelder passen sich der Kategorie an.</td>
+    <td width="50%"><b>Erinnerungsfenster</b><br>Erledigt mit Rückfrage oder später erinnern – auch morgen früh oder zu einer eigenen Zeit. Verpasste Erinnerungen sind markiert.</td>
+    <td width="50%"><b>Eintrag bearbeiten</b><br>Pflichtfelder passen sich der Kategorie an; Uhrzeit ohne Doppelpunkt eintippen oder mit −/+ stellen.</td>
   </tr>
   <tr>
     <td><img src="docs/screenshots/erinnerung.png" alt="Erinnerungsfenster"></td>
@@ -108,7 +111,7 @@ bevor etwas vergessen wird.
 | Sprache & Plattform | C# 12, .NET 8, Windows 10/11 |
 | Oberfläche | WPF mit MVVM, eigenes Design-System (Styles und Control-Templates), eigener Monatskalender |
 | Daten | SQLite über Microsoft.Data.Sqlite, WAL-Modus, idempotente Schema-Migrationen |
-| Tests | xUnit, 37 Tests mit temporären Fantasie-Datenbanken und steuerbarer Uhr (`IClock`) |
+| Tests | xUnit, 72 Tests mit temporären Fantasie-Datenbanken und steuerbarer Uhr (`IClock`) |
 | Windows-Integration | Tray-Symbol, Einzelinstanz pro Sitzung, Aufgabenplanung, `FlashWindowEx`, DWM |
 | Auslieferung | Inno Setup 6, PowerShell-Skripte für Build und Icon-Erzeugung |
 
@@ -148,8 +151,8 @@ Beim Start und bei jedem Tageswechsel läuft immer dieselbe Reihenfolge:
 
 ## Entstehung & meine Rolle
 
-Mein erstes eigenes Softwareprojekt – entstanden in einer Woche (5. bis 11. September 2026)
-und seitdem im täglichen Einsatz.
+Mein erstes eigenes Softwareprojekt – entstanden in einer Woche (5. bis 11. September 2026),
+seitdem im täglichen Einsatz und nach Rückmeldungen aus dem Betrieb weiterentwickelt.
 
 - **Anforderungen:** Bedarf aus dem Hotelalltag aufgenommen, Funktionsumfang, Datenschutz-Regeln,
   Abgrenzung und Abnahmekriterien schriftlich festgelegt
@@ -161,6 +164,9 @@ und seitdem im täglichen Einsatz.
   - Erinnerungen deutlich auffälliger gestaltet, Schlummern von 1 auf 10 Minuten geändert,
     später „In 1 Stunde" ergänzt
   - Modernes Redesign nach eigener Designvorlage und neu aufgebautes App-Icon
+  - Erinnerungen auf „morgen 8 Uhr" oder eine eigene Zeit verschiebbar – aber gesperrt, wenn der
+    Vorgang bis dahin schon gelöscht wäre, damit keine Erinnerung still verloren geht
+  - Uhrzeit-Eingabe ohne Doppelpunkt, weil Shift + Doppelpunkt im Alltag bei jedem Eintrag bremst
 
 ## Versionen
 
@@ -173,6 +179,8 @@ und seitdem im täglichen Einsatz.
 | 1.1.1 | „In 10 Minuten nochmal erinnern" |
 | 1.2.0 | Modernes Redesign, „In 1 Stunde nochmal erinnern" |
 | 1.2.1 | Neu aufgebautes App-Icon |
+| 1.3.0 | „Morgen um 8 Uhr" und eigene Erinnerungszeit; Bearbeiten lässt quittierte Erinnerungen in Ruhe |
+| 1.3.1 | Uhrzeit 09:00 vorbelegt, Eingabe ohne Doppelpunkt, −/+ in 15-Minuten-Schritten |
 
 ## Quellcode
 
